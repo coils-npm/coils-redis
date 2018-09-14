@@ -2,7 +2,7 @@ const redis = require('redis');
 const {promisify} = require('util')
 
 module.exports = {
-	mounted (application, options) {
+	mounted (application, options = {}) {
 		if (!options.db) { options.db = 1 }
 		const client = redis.createClient(options)
 		client.on('connect', () => { console.log('redis connected') })
